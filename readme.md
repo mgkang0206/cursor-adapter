@@ -37,3 +37,7 @@ The screenshot below shows what the app should look like.
 - [Cursor](http://developer.android.com/reference/android/database/Cursor.html)
 - [CursorAdapter](http://developer.android.com/reference/android/widget/CursorAdapter.html)
 - [SimpleCursorAdapter](http://developer.android.com/reference/android/widget/SimpleCursorAdapter.html)
+
+## Licensing
+All content is licensed under a CC­BY­NC­SA 4.0 license.
+All software code is licensed under GNU GPLv3. For commercial use or alternative licensing, please contact legal@ga.co.
