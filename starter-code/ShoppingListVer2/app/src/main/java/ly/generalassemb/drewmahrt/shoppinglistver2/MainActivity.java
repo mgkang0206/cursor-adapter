@@ -17,6 +17,7 @@ import ly.generalassemb.drewmahrt.shoppinglistver2.setup.DBAssetHelper;
 
 public class MainActivity extends AppCompatActivity {
 
+    private String TAG = this.getClass().getCanonicalName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +25,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Ignore the two lines below, they are for setup
-        DBAssetHelper dbSetup = new DBAssetHelper(MainActivity.this);
-        dbSetup.getReadableDatabase();
-
-
-
+        DBAssetHelper db = DBAssetHelper.getInstance(this);
     }
-
-
-
-
 }
