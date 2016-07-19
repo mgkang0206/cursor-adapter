@@ -1,15 +1,18 @@
 package ly.generalassemb.drewmahrt.shoppinglistver2.setup;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 /**
  * Created by drewmahrt on 12/29/15.
  */
-public class DBAssetHelper extends SQLiteAssetHelper {
+public class DBAssetHelper extends SQLiteOpenHelper {
 
-    private static final String TAG = ShoppingListSQLiteHelper.class.getCanonicalName();
+    private static final String TAG = DBAssetHelper.class.getCanonicalName();
 
     private static final int DATABASE_VERSION = 8;
     public static final String DATABASE_NAME = "SHOPPING_DB";
@@ -28,23 +31,24 @@ public class DBAssetHelper extends SQLiteAssetHelper {
                     + COL_DESC + " TEXT," + COL_PRICE + " TEXT," + COL_TYPE + " TEXT);";
 
 
-    private static ShoppingListSQLiteHelper instance;
+    private static DBAssetHelper instance;
 
-    public static ShoppingListSQLiteHelper getInstance(Context context) {
+    public static DBAssetHelper getInstance(Context context) {
         if (instance == null) {
-            instance = new ShoppingListSQLiteHelper(context);
+            instance = new DBAssetHelper(context);
         }
         return instance;
     }
 
-    private ShoppingListSQLiteHelper(Context context) {
-        super(context, "SHOPPING_DB", null, DATABASE_VERSION);
+    private DBAssetHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.i(TAG, CREATE_SHOPPING_LIST_TABLE);
-        db.execSQL(CREATE_SHOPPING_LIST_TABLE);}
+        db.execSQL(CREATE_SHOPPING_LIST_TABLE);
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
