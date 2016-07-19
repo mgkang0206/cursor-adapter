@@ -51,21 +51,4 @@ public class DBAssetHelper extends SQLiteAssetHelper {
         db.execSQL("DROP TABLE IF EXISTS " + SHOPPING_LIST_TABLE_NAME);
         this.onCreate(db);
     }
-
-    public boolean insertShopping(String item, String desc, String price, String type) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_ITEM_NAME, item);
-        contentValues.put(COL_DESC, desc);
-        contentValues.put(COL_PRICE, price);
-        contentValues.put(COL_TYPE, type);
-        db.insert(SHOPPING_LIST_TABLE_NAME, null, contentValues);
-        return true;
-    }
-
-    public Cursor getShoppingList(){
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(SHOPPING_LIST_TABLE_NAME,SHOPPING_COLUMNS,null,null,null,null,null,null);
-        return cursor;
-    }
 }
